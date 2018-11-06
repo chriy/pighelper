@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.y1ang.dao.SaleMapper">
+	<resultMap type="com.y1ang.entity.Sale" id="BasicMap">
+		<id column="sale_id" jdbcType="INTEGER" property="saleID" />
+		<result column="sale_date" jdbcType="VARCHAR" property="saleDate"/>
+		<result column="sale_price" jdbcType="DOUBLE" property="salePrice"/>
+		<result column="sale_quantity" jdbcType="INTEGER" property="saleQuantity"/>
+		<result column="sale_variety" jdbcType="VARCHAR" property="saleVariety"/>
+		<result column="total_weight" jdbcType="DOUBLE" property="totalWeight"/>
+		<result column="average_weight" jdbcType="DOUBLE" property="averageWeight"/>
+		<result column="sale_amount" jdbcType="DOUBLE" property="saleAmount"/>
+		<result column="average_money" jdbcType="DOUBLE" property="averageMoney"/>
+		<result column="batch_numer" jdbcType="INTEGER" property="batchNumer"/>
+	</resultMap>
+	
+	<!-- 查询所有卖猪账单 -->
+	<select id="findSaleRecord" resultMap="BasicMap">
+	   SELECT
+            sale_id,
+            sale_date,
+            sale_price,
+            sale_quantity,
+            sale_variety,
+            total_weight,
+            average_weight,
+            sale_amount,
+            average_money
+        FROM
+            t_sale s,
+            t_batch b
+        WHERE
+            s.batch_number = b.batch_number
+        AND b.batch_status = 1
+        limit #{page},#{limit}
+     </select>
+     
+     <!-- 查询卖猪账单的数量 -->
+     <select id="getSaleCount" resultType="int" parameterType="int">
+        select count(*) from t_sale where batch_number = #{batchNumber}
+     </select>
+     
+     <!-- 通过ID查询卖猪账单 -->
+    <select id="finSaleRecordByID" parameterType="int" resultMap="BasicMap">
+        select 
+            sale_id,
+            sale_date,
+            sale_price,
+            sale_quantity,
+            sale_variety,
+            total_weight,
+            average_weight,
+            sale_amount,
+            average_money
+        from t_sale
+        where sale_id=#{saleID}
+    </select>
+    
+    <!-- 添加卖猪记录 -->
+    <insert id="insertSaleRecord" parameterType="com.y1ang.entity.Sale">
+        insert into t_sale
+        values(0,
+            #{saleDate},
+            #{salePrice},
+            #{saleQuantity},
+            #{saleVariety},
+            #{totalWeight},
+            #{averageWeight},
+            #{averageMoney},
+            #{saleAmount},
+            #{batchNumber}
+        )
+    </insert>
+    
+    <!-- 更新卖猪账单 -->
+    <update id="updateSaleRecord" parameterType="com.y1ang.entity.Sale">
+        update 
+            t_sale
+        set 
+            sale_date = #{saleDate},
+            sale_price = #{salePrice},
+            sale_quantity = #{saleQuantity},
+            sale_variety = #{saleVariety},
+            total_weight = #{totalWeight},
+            average_weight = #{averageWeight},
+            sale_amount = #{saleAmount},
+            average_money = #{averageMoney}
+        where sale_id = #{saleID}
+    </update>
+	
+	<!-- 删除卖猪账单 -->
+	<delete id="deleteSaleRecord" parameterType="int">
+	   delete from t_sale where sale_id = #{saleID}
+	</delete>
+</mapper>

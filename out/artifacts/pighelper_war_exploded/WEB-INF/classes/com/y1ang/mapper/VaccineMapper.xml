@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.y1ang.dao.VaccineMapper">
+    <resultMap type="com.y1ang.entity.Vaccine" id="BasicMap">
+        <id column="vaccine_id" jdbcType="INTEGER" property="vaccineID"/>
+        <result column="vaccine_name" jdbcType="VARCHAR" property="vaccineName"/>
+        <result column="vaccine_date" jdbcType="VARCHAR" property="vaccineDate"/>
+        <result column="vaccine_quantity" jdbcType="VARCHAR" property="vaccineQuantity"/>
+        <result column="vaccine_money" jdbcType="DOUBLE" property="vaccineMoney"/>
+        <result column="batch_number" jdbcType="INTEGER" property="batchNumber"/>
+    </resultMap>
+    
+    <!-- 查询所有疫苗记录 -->
+    <select id="findAllVaccine" resultMap="BasicMap" parameterType="com.y1ang.entity.Page">
+        select 
+            vaccine_id,
+            vaccine_name,
+            vaccine_date,
+            vaccine_quantity,
+            vaccine_money
+        from 
+            t_vaccine v,
+            t_batch b
+        where v.batch_number = b.batch_number
+        and b.batch_status = 1
+        limit #{page},#{limit}
+    </select>
+    
+    <!-- 插入疫苗记录数据 -->
+    <insert id="insertVaccineRecord" parameterType="com.y1ang.entity.Vaccine">
+        insert into t_vaccine values(0,#{vaccineName},#{vaccineDate},#{vaccineQuantity},#{vaccineMoney},#{batchNumber})
+    </insert>
+    
+    <!-- 更新疫苗记录数据 -->
+    <update id="updateVaccineRecord" parameterType="com.y1ang.entity.Vaccine">
+        update 
+            t_vaccine 
+        set 
+            vaccine_name = #{vaccineName},
+            vaccine_date = #{vaccineDate},
+            vaccine_quantity = #{vaccineQuantity},
+            vaccine_money = #{vaccineMoney}
+        where
+            vaccine_id = #{vaccineID}
+    </update>
+    
+    <!-- 删除疫苗账单数据 -->
+    <delete id="deleteVaccineRecord" parameterType="int">
+        delete from t_vaccine where vaccine_id = #{vaccineID}
+    </delete>
+    
+    <!-- 通过ID查询疫苗记录 -->
+    <select id="findVaccineByID" parameterType="int" resultMap="BasicMap">
+        select 
+            vaccine_id,
+            vaccine_name,
+            vaccine_date,
+            vaccine_quantity,
+            vaccine_money
+        from
+            t_vaccine
+        where
+            vaccine_id = #{vaccineID}
+    </select>
+    
+    <!-- 查询疫苗账单总数 -->
+    <select id="getVaccineCount" resultType="int" parameterType="int">
+        select count(vaccine_id) from t_vaccine where batch_number = #{batchNumber}
+    </select>
+    
+</mapper>

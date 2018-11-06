@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.y1ang.dao.FeedMapper">
+	<resultMap type="com.y1ang.entity.Feed" id="BasicMap">
+		<id column="feed_id" jdbcType="INTEGER" property="feedID"/>
+		<result column="send_date" jdbcType="VARCHAR" property="sendDate"/>
+		<result column="feed_quantity" jdbcType="INTEGER" property="feedQuantity"/>
+		<result column="feed_price" jdbcType="DOUBLE" property="feedPrice"/>
+		<result column="feed_paystate" jdbcType="VARCHAR" property="feedPayState"/>
+		<result column="feed_total" jdbcType="DOUBLE" property="feedTotal"/>
+		<result column="batch_number" jdbcType="INTEGER" property="batchNumber"/>
+	</resultMap>
+	
+	<!-- 查询所有饲料账单 -->
+	<select id="findFeedRecord" resultMap="BasicMap" parameterType="com.y1ang.entity.Page">
+		SELECT
+			feed_id,
+			send_date,
+			feed_quantity,
+			feed_price,
+			feed_paystate,
+			feed_total
+		FROM
+			t_feed f,
+			t_batch b
+		WHERE
+			f.batch_number = b.batch_number
+		AND b.batch_status = 1
+		limit #{page},#{limit}
+	</select>
+	
+	<!-- 通过ID查询饲料账单 -->
+	<select id="findFeedRecordByID" parameterType="int" resultMap="BasicMap">
+		select 
+			feed_id,
+			send_date,
+			feed_quantity,
+			feed_price,
+			feed_paystate,
+			feed_total 
+		from t_feed 
+		where feed_id=#{feedID}
+	</select>
+	
+	<!-- 新增饲料账单记录 -->
+	<insert id="addFeedRecord" parameterType="com.y1ang.entity.Feed">
+		insert into t_feed value(0,#{sendDate},#{feedQuantity},#{feedPrice},#{feedPayState},#{feedTotal},#{batchNumber})
+	</insert>
+		
+	<!-- 更新饲料账单 -->
+	<update id="updateFeedRecord" parameterType="com.y1ang.entity.Feed">
+		update 
+			t_feed 
+		set
+			send_date = #{sendDate},
+			feed_quantity = #{feedQuantity},
+			feed_price = #{feedPrice},
+			feed_paystate = #{feedPayState},
+			feed_total = #{feedTotal}
+		where
+			feed_id = #{feedID}
+	</update>
+	<!-- 删除饲料账单 -->
+	<delete id="deleteFeedRecord" parameterType="int">
+		delete from t_feed where feed_id = #{feedID}
+	</delete>
+	
+	<!--  查询饲料账单的记录总数 -->
+	<select id="getFeedCount" resultType="int" parameterType="int">
+	   select count(*) from t_feed where batch_number = #{batch_number}
+	</select>
+</mapper>
