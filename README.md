@@ -20,9 +20,9 @@
 ![image](https://github.com/1angy/pighelper/blob/master/web/img/p5.png)
 
 6、各类账单数据的增删改查功能。<br>
-![image](https://github.com/1angy/pighelper/blob/master/web/img/p6.png)
-![image](https://github.com/1angy/pighelper/blob/master/web/img/p7.png)
-![image](https://github.com/1angy/pighelper/blob/master/web/img/p8.png)
+![image](https://github.com/1angy/pighelper/blob/master/web/img/p6.png)<br>
+![image](https://github.com/1angy/pighelper/blob/master/web/img/p7.png)<br>
+![image](https://github.com/1angy/pighelper/blob/master/web/img/p8.png)<br>
 
 
 
