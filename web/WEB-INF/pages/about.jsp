@@ -45,11 +45,9 @@
             <div class="layui-timeline-content layui-text">
                 <h3 class="layui-timeline-title">开发者信息</h3>
                 <p>
-                    计算机工程学院 <br>
-                    Java1607班 <br>
-                    毕业设计 <br>
-                    201617380722 <br>
-                    杨杰
+                   y1ang<br>
+                  江上清风游<br>
+                  明月逐人归
                 </p>
             </div>
         </li>
