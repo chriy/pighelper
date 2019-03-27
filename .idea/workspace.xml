@@ -272,7 +272,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553673769977" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553674243659" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -552,7 +552,7 @@
       <workItem from="1541496252189" duration="204000" />
       <workItem from="1541496539096" duration="1564000" />
       <workItem from="1541498480942" duration="22000" />
-      <workItem from="1553672905629" duration="851000" />
+      <workItem from="1553672905629" duration="1155000" />
     </task>
     <task id="LOCAL-00001" summary="基于Hybrid+SSM的养猪信息化管理平台，该平台实现了对每日新闻，猪价的爬虫获取，还要养殖过程中各类开支账单的增删改">
       <created>1541496834697</created>
@@ -572,7 +572,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99311000" />
+    <option name="totallyTimeSpent" value="99615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
