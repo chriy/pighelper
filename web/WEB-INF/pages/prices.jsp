@@ -30,8 +30,6 @@
 	            <table id="day_qg_price"></table><br>	        
 	            <blockquote class="layui-elem-quote">今日省内猪价<span style="color: #01AAED;font-size:15px;">&emsp;(仅供参考)</span></blockquote>
 	            <table id="day_prov_price"></table>
-	            <!-- <blockquote class="layui-elem-quote">今日怀化市地区猪价<span style="color: #01AAED;font-size:15px;">&emsp;(仅供参考)</span></blockquote>
-	            <table id="day_city_price"></table> -->
 	        </div>
 	        
 	        <div class="layui-container" style="margin-top: 20px;">

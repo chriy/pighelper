@@ -1,14 +1,12 @@
 package com.y1ang.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.y1ang.util.GetNewsUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.y1ang.util.GetNewsUtil;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 /**
  * 
  * @author y1ang
@@ -19,7 +17,6 @@ import com.y1ang.util.GetNewsUtil;
 public class NewsController {
 	/**
 	 * 首页展示新闻
-	 * @param model
 	 * @return
 	 */
 	

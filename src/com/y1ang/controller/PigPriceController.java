@@ -44,16 +44,4 @@ public class PigPriceController {
         PriceJson price = GetPricesUtil.getPrices("https://zhujia.zhuwang.cc/areapriceinfo-430000.shtml");
         return price;
     }
-
-    /**
-     * 获取怀化市地区城市猪价
-     * 
-     * @return
-     */
-    @RequestMapping("/getCityPrice")
-    @ResponseBody
-    public PriceJson getCityPrice() {
-        PriceJson price = GetPricesUtil.getPrices("https://zhujia.zhuwang.cc/areapriceinfo-431200.shtml");
-        return price;
-    }
 }

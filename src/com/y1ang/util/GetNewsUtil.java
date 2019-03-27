@@ -75,7 +75,7 @@ public class GetNewsUtil {
      * @return
      */
     public static List<List<String>> getItem() {
-        String reqUrl = "http://www.zhuwang.cc/";
+        String reqUrl = "https://www.zhuwang.cc/";
         String resource = GetNewsUtil.getSources(reqUrl);
         List<List<String>> result = new ArrayList<>();
         List<String> hrefList = new ArrayList<>();
